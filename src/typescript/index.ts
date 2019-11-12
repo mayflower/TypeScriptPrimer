@@ -1,5 +1,5 @@
 
-    import { Main } from './Example';
+    import { Main } from './Main';
 
     /*******************************************************************************************************************
     *   Being invoked when the page is loaded completely.
@@ -8,10 +8,11 @@
     {
         // set the document title and acclaim the debug console
         document.title = 'TypeScriptPrimer';
-        console.log( 'Start catapult demo' );
+        console.log( 'Start run demo' );
 
-        // launch the Catapult demo
-        Main.catapult();
+        // create and launch the Catapult demo
+        const main:Main = new Main();
+        main.run();
     };
 
     /*******************************************************************************************************************

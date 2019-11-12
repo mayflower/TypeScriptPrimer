@@ -4,11 +4,11 @@
 
 https://www.meetup.com/de-DE/Mayflower-Meetup-Berlin/events/266259645/
 
-Ich stelle Euch in diesem Vortrag die Programmiersprache TypeScript vor und verdeutliche Euch im praktischen Einsatz,
- TypeScript der Verwendung von JavaScript als Programmiersprache für die Entwicklung moderner Webapplikationen 
+Ich stelle Euch in diesem Vortrag die Programmiersprache TypeScript vor und verdeutliche im praktischen Einsatz,
+ warum TypeScript der Verwendung von JavaScript als Programmiersprache für die Entwicklung moderner Webapplikationen 
  vorzuziehen ist.
 
-Hierfür gebe ich einen Einblick in die Funktionsweise eines modernen Web-TechStack, der mit Hilfe der Technologien 
+Hierfür gebe ich einen Einblick in die Funktionsweise eines modernen Web-Tech Stacks, der mit Hilfe der Technologien 
  npm, TypeScript und Webpack realisiert wurde. Anhand einer minimalen Beispielanwendung stellt ich Euch die wichtigsten
  Features und Sprachkonstrukte von TypeScript vor und ziehe dabei Parallelen zu anderen bekannten und 
  modernen Hochsprachen.
@@ -18,7 +18,7 @@ Hierfür gebe ich einen Einblick in die Funktionsweise eines modernen Web-TechSt
 ## Tech Stack
 - TypeScript 3.4.5
 - Webpack 4.40
-- matter.js 0.14.2
+- matter.js 0.10.4
 - TypeDoc 0.14
 - TSLint 5.16
 
@@ -72,13 +72,6 @@ Die in den Webpack Dev Server gemountete Frontend Anwendung kann im Browser eing
 
 Alle Einstellungen für den Webpack Dev Server befinden sich in der `/webpack.config.js`
  im Abschnitt `config.devServer`.
-
-Damit HTTP Requests auf die API gelingen muss die CORS-Policy deaktiviert werden.
- Dies gelingt über das Deaktivieren der Web Security des Browsers wie folgt:
-
-```
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security --user-data-dir /tmp
-```
 
 ![TSLint](_ASSET/readme/logo_tslint.png)
 

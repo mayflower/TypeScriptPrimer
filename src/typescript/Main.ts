@@ -7,9 +7,9 @@
     export class Main
     {
         /***************************************************************************************************************
-        *   Launch the catapult deno application.
+        *   Launch the run deno application.
         ***************************************************************************************************************/
-        public static catapult() : any
+        public run() : any
         {
             var Engine = Matter.Engine,
                 Render = Matter.Render,
