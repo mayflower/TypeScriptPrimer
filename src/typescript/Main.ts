@@ -11,26 +11,12 @@
         ***************************************************************************************************************/
         public run() : void
         {
-            // reference LIBs!! PRUNE!
-
-            var Engine = Matter.Engine;
-            var Render = Matter.Render;
-            var Runner = Matter.Runner;
-            var Composites = Matter.Composites;
-            var Constraint = Matter.Constraint;
-            var MouseConstraint = Matter.MouseConstraint;
-            var Mouse = Matter.Mouse;
-            var World = Matter.World;
-            var Bodies = Matter.Bodies;
-            var Body = Matter.Body;
-            var Vector = Matter.Vector;
-
             // create engine
-            var engine = Engine.create();
+            var engine = Matter.Engine.create();
             var world  = engine.world;
 
             // create renderer
-            var render = Render.create(
+            var render = Matter.Render.create(
                 {
                     element: document.body,
                     engine: engine,
@@ -47,38 +33,38 @@
             );
 
             // run the renderer
-            Render.run( render );
+            Matter.Render.run( render );
 
             // create runner
-            var runner = Runner.create( {} );
-            Runner.run(runner, engine);
+            var runner = Matter.Runner.create( {} );
+            Matter.Runner.run(runner, engine);
 
             // add bodies
-            var group = Body.nextGroup(true);
+            var group = Matter.Body.nextGroup(true);
 
-            var stack = Composites.stack( 250, 255, 1, 6, 0, 0, ( x:number, y:number ) :Matter.Body => {
-                return Bodies.rectangle(x, y, 30, 30);
+            var stack = Matter.Composites.stack( 250, 255, 1, 6, 0, 0, ( x:number, y:number ) :Matter.Body => {
+                return Matter.Bodies.rectangle(x, y, 30, 30);
             });
 
-            var catapult = Bodies.rectangle(400, 520, 320, 20, {});
+            var catapult = Matter.Bodies.rectangle(400, 520, 320, 20, {});
 
             // add all bodies and constraints to the world
-            World.add( world, stack );
-            World.add( world, catapult );
-            World.add( world, Bodies.rectangle(400, 600, 800, 50.5, { isStatic: true }) );
-            World.add( world, Bodies.rectangle(250, 555, 20, 50, { isStatic: true }) );
-            World.add( world, Bodies.rectangle(400, 535, 20, 80, { isStatic: true, collisionFilter: { group: group, category: 0, mask: 0 } }) );
-            World.add( world, Bodies.circle(560, 100, 50, { density: 0.005 }) );
-            World.add( world, Constraint.create({
+            Matter.World.add( world, stack );
+            Matter.World.add( world, catapult );
+            Matter.World.add( world, Matter.Bodies.rectangle(400, 600, 800, 50.5, { isStatic: true }) );
+            Matter.World.add( world, Matter.Bodies.rectangle(250, 555, 20, 50, { isStatic: true }) );
+            Matter.World.add( world, Matter.Bodies.rectangle(400, 535, 20, 80, { isStatic: true, collisionFilter: { group: group, category: 0, mask: 0 } }) );
+            Matter.World.add( world, Matter.Bodies.circle(560, 100, 50, { density: 0.005 }) );
+            Matter.World.add( world, Matter.Constraint.create({
                 bodyA: catapult,
-                pointB: Vector.clone(catapult.position),
+                pointB: Matter.Vector.clone(catapult.position),
                 stiffness: 1,
                 length: 0
             }) );
 
             // add mouse control
-            var mouse = Mouse.create(render.canvas);
-            var mouseConstraint = MouseConstraint.create(
+            var mouse = Matter.Mouse.create(render.canvas);
+            var mouseConstraint = Matter.MouseConstraint.create(
                 engine,
                 {
                     mouse: mouse,
@@ -101,6 +87,6 @@
                     }
                 }
             );
-            World.add( world, mouseConstraint );
+            Matter.World.add( world, mouseConstraint );
         }
     }
