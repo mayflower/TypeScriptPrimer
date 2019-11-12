@@ -27,12 +27,11 @@ Example.catapult = function() {
         options: {
             width: 800,
             height: 600,
-
-            /*
-                showAngleIndicator: true,
-                showCollisions: true,
-                showVelocity: true
-            */
+/*
+            showAngleIndicator: true,
+            showCollisions: true,
+            showVelocity: true
+*/
         }
     });
 
@@ -51,7 +50,7 @@ Example.catapult = function() {
 
     var catapult = Bodies.rectangle(400, 520, 320, 20, {});
 
-
+    // add all bodies and constraints to the world
     World.add( world, stack );
     World.add( world, catapult );
     World.add( world, Bodies.rectangle(400, 600, 800, 50.5, { isStatic: true }) );
@@ -66,21 +65,31 @@ Example.catapult = function() {
     }) );
 
     // add mouse control
-/*
-    var mouse = Mouse.create(render.canvas),
-        mouseConstraint = MouseConstraint.create(engine, {
+    var mouse = Mouse.create(render.canvas);
+    var mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
+
             constraint: {
                 stiffness: 0.2,
                 render: {
                     visible: false,
                     lineWidth: 1,
                     strokeStyle: 'dashed',
-                }
+                },
+                bodyA: null,
+                bodyB: null,
+                pointA: null,
+                pointB: null,
+                length: 0,
+                label: '',
+                damping: 0,
+                type: '',
+                id: 0,
             }
+
         });
-    World.add(world, mouseConstraint);
-*/
+    World.add( world, mouseConstraint );
+
 
     // keep the mouse in sync with rendering
 /*
@@ -99,7 +108,7 @@ Example.catapult = function() {
         runner: runner,
         render: render,
         canvas: render.canvas,
-        stop: () => {
+        stop: () :void => {
             Matter.Render.stop(render);
             Matter.Runner.stop(runner);
         }
