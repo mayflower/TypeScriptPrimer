@@ -21,13 +21,6 @@
                 }
             );
 
-            // run the renderer
-            matter.Render.run( render );
-
-            // create runner
-            const runner:matter.Runner = matter.Runner.create( {} );
-            matter.Runner.run( runner, engine );
-
             // create bodies
             const group :number = matter.Body.nextGroup( true );
             const catapult :matter.Body = matter.Bodies.rectangle( 400, 520, 320, 20, {} );
@@ -45,12 +38,14 @@
             matter.World.add( world, matter.Bodies.rectangle(250, 555, 20, 50, { isStatic: true }) );
             matter.World.add( world, matter.Bodies.rectangle(400, 535, 20, 80, { isStatic: true, collisionFilter: { group: group, category: 0, mask: 0 } }) );
             matter.World.add( world, matter.Bodies.circle(560, 100, 50, { density: 0.005 }) );
-            matter.World.add( world, matter.Constraint.create({
-                bodyA: catapult,
-                pointB: matter.Vector.clone(catapult.position),
-                stiffness: 1,
-                length: 0
-            }) );
+            matter.World.add( world, matter.Constraint.create(
+                {
+                    bodyA:     catapult,
+                    pointB:    matter.Vector.clone( catapult.position ),
+                    stiffness: 1,
+                    length:    0
+                }
+            ) );
 
             // add mouse control
             const mouse           :matter.Mouse           = matter.Mouse.create( render.canvas );
@@ -78,5 +73,10 @@
                 }
             );
             matter.World.add( world, mouseConstraint );
+
+            // create the runner and run the engine and the renderer
+            const runner:matter.Runner = matter.Runner.create( {} );
+            matter.Runner.run( runner, engine );
+            matter.Render.run( render );
         }
     }
