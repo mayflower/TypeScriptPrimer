@@ -1,5 +1,5 @@
 
-    import { Example } from './Example';
+    import { Main } from './Example';
 
     /*******************************************************************************************************************
     *   Being invoked when the page is loaded completely.
@@ -11,7 +11,7 @@
         console.log( 'Start catapult demo' );
 
         // launch the Catapult demo
-        Example.catapult();
+        Main.catapult();
     };
 
     /*******************************************************************************************************************
