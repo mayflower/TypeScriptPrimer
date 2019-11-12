@@ -9,40 +9,45 @@
         /***************************************************************************************************************
         *   Launch the run deno application.
         ***************************************************************************************************************/
-        public run() : any
+        public run() : void
         {
-            var Engine = Matter.Engine,
-                Render = Matter.Render,
-                Runner = Matter.Runner,
-                Composites = Matter.Composites,
-                Constraint = Matter.Constraint,
-                MouseConstraint = Matter.MouseConstraint,
-                Mouse = Matter.Mouse,
-                World = Matter.World,
-                Bodies = Matter.Bodies,
-                Body = Matter.Body,
-                Vector = Matter.Vector;
+            // reference LIBs!! PRUNE!
+
+            var Engine = Matter.Engine;
+            var Render = Matter.Render;
+            var Runner = Matter.Runner;
+            var Composites = Matter.Composites;
+            var Constraint = Matter.Constraint;
+            var MouseConstraint = Matter.MouseConstraint;
+            var Mouse = Matter.Mouse;
+            var World = Matter.World;
+            var Bodies = Matter.Bodies;
+            var Body = Matter.Body;
+            var Vector = Matter.Vector;
 
             // create engine
-            var engine = Engine.create(),
-                world = engine.world;
+            var engine = Engine.create();
+            var world  = engine.world;
 
             // create renderer
-            var render = Render.create({
-                element: document.body,
-                engine: engine,
-                options: {
-                    width: 800,
-                    height: 600,
-        /*
-                    showAngleIndicator: true,
-                    showCollisions: true,
-                    showVelocity: true
-        */
+            var render = Render.create(
+                {
+                    element: document.body,
+                    engine: engine,
+                    options: {
+                        width: 800,
+                        height: 600,
+/*
+                        showAngleIndicator: true,
+                        showCollisions: true,
+                        showVelocity: true
+*/
+                    }
                 }
-            });
+            );
 
-            Render.run(render);
+            // run the renderer
+            Render.run( render );
 
             // create runner
             var runner = Runner.create( {} );
@@ -51,7 +56,7 @@
             // add bodies
             var group = Body.nextGroup(true);
 
-            var stack = Composites.stack(250, 255, 1, 6, 0, 0, function(x, y) {
+            var stack = Composites.stack( 250, 255, 1, 6, 0, 0, ( x:number, y:number ) :Matter.Body => {
                 return Bodies.rectangle(x, y, 30, 30);
             });
 
@@ -73,9 +78,10 @@
 
             // add mouse control
             var mouse = Mouse.create(render.canvas);
-            var mouseConstraint = MouseConstraint.create(engine, {
+            var mouseConstraint = MouseConstraint.create(
+                engine,
+                {
                     mouse: mouse,
-
                     constraint: {
                         stiffness: 0.2,
                         render: {
@@ -93,32 +99,8 @@
                         type: '',
                         id: 0,
                     }
-
-                });
-            World.add( world, mouseConstraint );
-
-
-            // keep the mouse in sync with rendering
-        /*
-            render.mouse = mouse;
-        */
-            // fit the render viewport to the scene
-        /*
-            Render.lookAt(render, {
-                min: { x: 0, y: 0 },
-                max: { x: 800, y: 600 }
-            });
-        */
-            // context for MatterTools.Demo
-            return {
-                engine: engine,
-                runner: runner,
-                render: render,
-                canvas: render.canvas,
-                stop: () :void => {
-                    Matter.Render.stop(render);
-                    Matter.Runner.stop(runner);
                 }
-            };
+            );
+            World.add( world, mouseConstraint );
         }
     }
