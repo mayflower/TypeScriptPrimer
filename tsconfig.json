@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target":               "es5",          /* ECMAScript target version: 'ES3', 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
+        "module":               "commonjs",     /* Module code generation: 'commonjs', 'amd', 'system', 'umd' or 'es2015'. */
+        "outDir":               "./bin/",       /* Output directory for transpiled JS files. */
+        "declaration":          true,           /* Generate corresponding '.d.ts' files. */
+        "sourceMap":            true,           /* Generate corresponding '.map' files. */
+        "strict":               true,           /* Enable all strict type-checking options. */
+        "noImplicitAny":        false,          /* Raise errors on expressions and declarations with an implied 'any' type. */
+        "strictNullChecks":     false,          /* Enable strict null checks. */
+        "downlevelIteration":   true,           /* Required for 'for of' loops. */
+        "jsx":                  "react",        /* Detect jsx files as React View Components. */
+        "typeRoots": [                          /* List of folders to include type definitions from. */
+            "node_modules/@types"
+        ]
+    },
+
+    "include": [                                /* TypeScript sources to include. */
+        "src/**/*"
+    ]
+}

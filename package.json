@@ -1,0 +1,81 @@
+{
+    "name": "ant-design-primer",
+    "version": "1.0.0",
+    "description": "Ant Design meets The International Chuck Norris Database",
+    "author": "Christopher Stock <christopher.stock@mayflower.de>",
+    "license": "MIT",
+    "main": "dist/index.html",
+    "homepage": "https://www.mayflower.de",
+    "repository": "https://github.com/christopherstock/AntDesignPrimer.git",
+    "bugs": "https://github.com/christopherstock/AntDesignPrimer/issues",
+    "scripts": {
+        "typescript:compile": "tsc",
+        "webpack:dev": "webpack --mode=development --watch",
+        "webpack:production": "webpack --mode=production --watch",
+        "webpack:devserver": "webpack-dev-server --mode=development",
+        "typedoc:generate": "typedoc --out doc --listInvalidSymbolLinks --name \"Ant Design meets The International Chuck Norris Database, (c) 2019 Mayflower GmbH\" src/typescript",
+        "tslint:check": "tslint --project ./tsconfig.json --config ./tslint.json \"src/**/*.{ts,tsx}\"",
+        "test:all": "mocha --require ts-node/register --require ignore-styles --require src/test/index.ts src/test/**/*.ts src/test/**/*.tsx",
+        "test:jest": "jest",
+        "test:jest-coverage": "jest --coverage"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.1.7",
+        "@types/enzyme": "^3.10.3",
+        "@types/jest": "^24.0.18",
+        "@types/matter-js": "^0.10.4",
+        "@types/moment": "^2.13.0",
+        "@types/node": "^9.6.48",
+        "@types/react": "^16.0.35",
+        "@types/react-dom": "^16.0.3",
+        "@types/webpack": "^4.4.29",
+        "awesome-typescript-loader": "^5.2.1",
+        "chai": "^4.2.0",
+        "css-loader": "^0.28.11",
+        "enzyme": "^3.10.0",
+        "enzyme-adapter-react-16": "^1.14.0",
+        "ignore-styles": "^5.0.1",
+        "jest": "^24.9.0",
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
+        "mocha": "^5.2.0",
+        "react-test-renderer": "^16.10.2",
+        "source-map-loader": "^0.2.4",
+        "style-loader": "^0.20.3",
+        "ts-jest": "^24.1.0",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.16.0",
+        "typedoc": "^0.14.2",
+        "typescript": "^3.4.5",
+        "webpack": "^4.30.0",
+        "webpack-cli": "^3.3.1",
+        "webpack-dev-server": "^3.3.1"
+    },
+    "dependencies": {
+        "antd": "^3.1.6",
+        "matter-js": "^0.14.2",
+        "moment": "^2.20.1",
+        "rc-scroll-anim": "^2.5.9",
+        "rc-tween-one": "^2.5.0",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "wowjs": "^1.1.3"
+    },
+    "jest": {
+        "verbose": true,
+        "transform": {
+            ".(ts|tsx)": "ts-jest"
+        },
+        "testRegex": "(/src/test/.*\\.(test|spec))\\.(ts|tsx|js|jsx)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx"
+        ],
+        "testURL": "http://localhost/",
+        "setupFiles": [
+            "<rootDir>/src/test/index.ts"
+        ]
+    }
+}

@@ -1,0 +1,15 @@
+
+# mac file system
+.DS_Store
+
+# JetBrains IDEs
+/.idea
+*.iml
+
+# Node.js
+/node_modules
+
+# build and output paths
+/bin
+/doc
+/dist/js
