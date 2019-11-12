@@ -1,7 +1,7 @@
 
 import * as Matter from 'matter-js';
 
-var Example = Example || {};
+export var Example = Example || {};
 
 Example.catapult = function() {
     var Engine = Matter.Engine,
@@ -103,10 +103,3 @@ if (typeof module !== 'undefined') {
     module.exports = Example[Object.keys(Example)[0]];
 }
 */
-
-    window.onload = ()  =>
-    {
-        console.log( "Start catapult demo" );
-
-        Example.catapult();
-    };

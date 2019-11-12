@@ -1,34 +1,23 @@
 
     import * as Matter from 'matter-js';
-
-    // import { MatterJsDemo } from './MatterJsDemo';
-
-    require( './Demo.js' );
-
-
-
-//    import * as Example from './Demo.js';
-
-    //    import * as Demo from './Demo';
+    import { Example } from './Demo';
 
     /*******************************************************************************************************************
     *   Being invoked when the page is loaded completely.
     *******************************************************************************************************************/
-/*
     window.onload = () : void  =>
     {
+        // set the document title and acclaim the debug console
         document.title = 'TypeScriptPrimer';
+        console.log( 'Start catapult demo' );
 
-        // MatterJsDemo.run();
-
+        // launch the Catapult demo
         Example.catapult();
     };
-*/
+
     /*******************************************************************************************************************
     *   Being invoked when the page is left.
     *******************************************************************************************************************/
-/*
     window.onunload = () : void  =>
     {
     };
-*/
