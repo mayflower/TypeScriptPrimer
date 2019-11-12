@@ -1,6 +1,6 @@
 
     import * as Matter from 'matter-js';
-    import { Example } from './Demo';
+    import { Example } from './Example';
 
     /*******************************************************************************************************************
     *   Being invoked when the page is loaded completely.

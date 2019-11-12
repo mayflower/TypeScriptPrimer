@@ -27,16 +27,19 @@ Example.catapult = function() {
         options: {
             width: 800,
             height: 600,
-            showAngleIndicator: true,
-            showCollisions: true,
-            showVelocity: true
+
+            /*
+                showAngleIndicator: true,
+                showCollisions: true,
+                showVelocity: true
+            */
         }
     });
 
     Render.run(render);
 
     // create runner
-    var runner = Runner.create();
+    var runner = Runner.create( {} );
     Runner.run(runner, engine);
 
     // add bodies
@@ -46,40 +49,43 @@ Example.catapult = function() {
         return Bodies.rectangle(x, y, 30, 30);
     });
 
-    var catapult = Bodies.rectangle(400, 520, 320, 20, { collisionFilter: { group: group } });
+    var catapult = Bodies.rectangle(400, 520, 320, 20, {});
 
-    World.add(world, [
-        stack,
-        catapult,
-        Bodies.rectangle(400, 600, 800, 50.5, { isStatic: true }),
-        Bodies.rectangle(250, 555, 20, 50, { isStatic: true }),
-        Bodies.rectangle(400, 535, 20, 80, { isStatic: true, collisionFilter: { group: group } }),
-        Bodies.circle(560, 100, 50, { density: 0.005 }),
-        Constraint.create({
-            bodyA: catapult,
-            pointB: Vector.clone(catapult.position),
-            stiffness: 1,
-            length: 0
-        })
-    ]);
+
+    World.add( world, stack );
+    World.add( world, catapult );
+    World.add( world, Bodies.rectangle(400, 600, 800, 50.5, { isStatic: true }) );
+    World.add( world, Bodies.rectangle(250, 555, 20, 50, { isStatic: true }) );
+    World.add( world, Bodies.rectangle(400, 535, 20, 80, { isStatic: true, collisionFilter: { group: group, category: 0, mask: 0 } }) );
+    World.add( world, Bodies.circle(560, 100, 50, { density: 0.005 }) );
+    World.add( world, Constraint.create({
+        bodyA: catapult,
+        pointB: Vector.clone(catapult.position),
+        stiffness: 1,
+        length: 0
+    }) );
 
     // add mouse control
+/*
     var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
             constraint: {
                 stiffness: 0.2,
                 render: {
-                    visible: false
+                    visible: false,
+                    lineWidth: 1,
+                    strokeStyle: 'dashed',
                 }
             }
         });
-
     World.add(world, mouseConstraint);
+*/
 
     // keep the mouse in sync with rendering
+/*
     render.mouse = mouse;
-
+*/
     // fit the render viewport to the scene
 /*
     Render.lookAt(render, {
@@ -93,14 +99,9 @@ Example.catapult = function() {
         runner: runner,
         render: render,
         canvas: render.canvas,
-        stop: function() {
+        stop: () => {
             Matter.Render.stop(render);
             Matter.Runner.stop(runner);
         }
     };
 };
-/*
-if (typeof module !== 'undefined') {
-    module.exports = Example[Object.keys(Example)[0]];
-}
-*/
