@@ -1,7 +1,7 @@
 module.exports = ( env, argv ) => {
 
     let config = {
-        entry: './src/typescript/index.ts',
+        entry: './src/index.ts',
         output: {
             filename: 'bundle.js',
             path: __dirname + '/dist/js/'

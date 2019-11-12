@@ -18,15 +18,6 @@
                 {
                     element: document.body,
                     engine: engine,
-                    options: {
-                        width: 800,
-                        height: 600,
-/*
-                        showAngleIndicator: true,
-                        showCollisions: true,
-                        showVelocity: true
-*/
-                    }
                 }
             );
 
@@ -37,15 +28,15 @@
             const runner:matter.Runner = matter.Runner.create( {} );
             matter.Runner.run( runner, engine );
 
-            // add bodies
+            // create bodies
             const group :number = matter.Body.nextGroup( true );
+            const catapult :matter.Body = matter.Bodies.rectangle( 400, 520, 320, 20, {} );
             const stack :matter.Composite = matter.Composites.stack(
                 250, 255, 1, 6, 0, 0,
                 ( x:number, y:number ) :matter.Body => {
                     return matter.Bodies.rectangle( x, y, 30, 30 );
                 }
             );
-            const catapult :matter.Body = matter.Bodies.rectangle( 400, 520, 320, 20, {} );
 
             // add all bodies and constraints to the world
             matter.World.add( world, stack );
