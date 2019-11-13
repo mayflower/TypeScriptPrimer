@@ -91,8 +91,21 @@
             matter.World.add(
                 this.world,
                 matter.Bodies.rectangle(
-                    400, 600, 800, 50.5,
-                    { isStatic: true, render: { fillStyle: '#00000055', strokeStyle: 'transparent', } }
+                    400, 587.5, 800, 25,
+                    {
+                        isStatic: true,
+                        render: {
+                            sprite: {
+                                texture: 'res/image/ground.png',
+                                xScale:  1.0,
+                                yScale:  1.0,
+                            }
+/*
+                            fillStyle: '#00000055',
+                            strokeStyle: 'transparent',
+*/
+                        }
+                    }
                 )
             );
             matter.World.add( this.world, matter.Bodies.rectangle( 250, 555, 20, 50, { isStatic: true } ) );
@@ -118,7 +131,16 @@
                 }
             ) );
 
-            matter.World.add( this.world, matter.Bodies.circle( 560, 100, 50, { density: 0.005 } ) );
+            matter.World.add( this.world, matter.Bodies.circle( 560, 100, 50, {
+                density: 0.005,
+                render: {
+                    sprite: {
+                        texture: 'res/image/ball.png',
+                        xScale:  1.0,
+                        yScale:  1.0,
+                    }
+                }
+            } ) );
             matter.World.add(
                 this.world,
                 matter.Constraint.create(
@@ -171,10 +193,8 @@
         private styleBodyAndCanvas() : void
         {
             document.body.style.margin = '0';
-            document.body.style.backgroundColor = '#dae4ec';
-
-            this.render.canvas.style.margin = '0 auto';
-            this.render.canvas.style.display = 'block';
+            document.body.style.backgroundColor = '#9f9a94';
+            document.body.style.backgroundImage = 'url( res/image/stone.png )';
         }
 
         /***************************************************************************************************************
