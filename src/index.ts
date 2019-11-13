@@ -1,4 +1,5 @@
 
+    import { Setting    } from './Setting';
     import { MatterDemo } from './MatterDemo';
 
     /*******************************************************************************************************************
@@ -6,9 +7,9 @@
     *******************************************************************************************************************/
     window.onload = () : void  =>
     {
-        // set the document title and acclaim the debug console
-        document.title = 'TypeScriptPrimer';
-        console.log( 'Start start demo' );
+        // set document title and acclaim debug console
+        document.title = ( Setting.APP_TITLE + ', ' + Setting.APP_COPYRIGHT );
+        console.log( 'Welcome to [' + Setting.APP_TITLE + ']' );
 
         // create and launch the Catapult demo
         const main:MatterDemo = new MatterDemo();

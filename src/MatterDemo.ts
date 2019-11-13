@@ -72,7 +72,7 @@
                         {
                             render: {
                                 sprite: {
-                                    texture: 'res/image/texture_crate.jpg',
+                                    texture: 'res/image/stone.png',
                                     xScale:  1.0,
                                     yScale:  1.0,
                                 }
@@ -88,7 +88,13 @@
             matter.World.add( this.world, bg );
             matter.World.add( this.world, stack );
             matter.World.add( this.world, catapult );
-            matter.World.add( this.world, matter.Bodies.rectangle( 400, 600, 800, 50.5, { isStatic: true } ) );
+            matter.World.add(
+                this.world,
+                matter.Bodies.rectangle(
+                    400, 600, 800, 50.5,
+                    { isStatic: true, render: { fillStyle: '#00000055', strokeStyle: 'transparent', } }
+                )
+            );
             matter.World.add( this.world, matter.Bodies.rectangle( 250, 555, 20, 50, { isStatic: true } ) );
 
             matter.World.add( this.world, matter.Bodies.rectangle(
@@ -108,14 +114,6 @@
                         strokeStyle: 'blue',
                         lineWidth: 3,
 */
-
-
-                        sprite: {
-                            texture: 'res/image/test.png',
-                            xScale:  1.0,
-                            yScale:  1.0,
-                        }
-
                     }
                 }
             ) );
@@ -173,6 +171,7 @@
         private styleBodyAndCanvas() : void
         {
             document.body.style.margin = '0';
+            document.body.style.backgroundColor = '#dae4ec';
 
             this.render.canvas.style.margin = '0 auto';
             this.render.canvas.style.display = 'block';
