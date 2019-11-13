@@ -21,6 +21,7 @@
             this.initMatterEngine();
             this.initAndAddBodies();
             this.initMouse();
+            this.styleBodyAndCanvas();
 
             this.runMatterEngine();
         }
@@ -164,6 +165,17 @@
                 }
             );
             matter.World.add( this.world, mouseConstraint );
+        }
+
+        /***************************************************************************************************************
+        *   Sets css for the document body and centers the matter.js canvas inside the body horizontally.
+        ***************************************************************************************************************/
+        private styleBodyAndCanvas() : void
+        {
+            document.body.style.margin = '0';
+
+            this.render.canvas.style.margin = '0 auto';
+            this.render.canvas.style.display = 'block';
         }
 
         /***************************************************************************************************************
