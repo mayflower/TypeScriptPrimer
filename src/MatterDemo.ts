@@ -48,12 +48,17 @@
         ***************************************************************************************************************/
         private initAndAddBodies() : void
         {
-            const bg    :matter.Body = matter.Bodies.rectangle( 400, 300, 800, 600,
+            const bg :matter.Body = matter.Bodies.rectangle( 400, 300, 800, 600,
                 {
                     isSensor: true,
                     isStatic: true,
                     render: {
-                        fillStyle: '#000000',
+                        // fillStyle: '#000000',
+                        sprite: {
+                            texture: 'res/image/bg.jpg',
+                            xScale:  1.0,
+                            yScale:  1.0,
+                        }
                     }
                 }
             );
