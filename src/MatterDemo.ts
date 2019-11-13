@@ -48,18 +48,38 @@
         ***************************************************************************************************************/
         private initAndAddBodies() : void
         {
+            const bg    :matter.Body = matter.Bodies.rectangle( 400, 300, 800, 600,
+                {
+                    isSensor: true,
+                    isStatic: true,
+                    render: {
+                        fillStyle: '#000000',
+                    }
+                }
+            );
             const group :number = matter.Body.nextGroup( true );
             const catapult :matter.Body = matter.Bodies.rectangle( 400, 520, 320, 20, {} );
             const stack :matter.Composite = matter.Composites.stack(
-                250, 255, 1, 6, 0, 0,
+                250, 150, 2, 6, 0, 0,
                 ( x:number, y:number ) :matter.Body => {
-                    return matter.Bodies.rectangle( x, y, 30, 30 );
+                    return matter.Bodies.rectangle( x, y, 50, 50,
+                        {
+                            render: {
+                                sprite: {
+                                    texture: 'res/image/texture_crate.jpg',
+                                    xScale:  1.0,
+                                    yScale:  1.0,
+                                }
+                            }
+                        }
+                    );
                 }
             );
 
             // this.addBodies();
 
             // add all bodies and constraints to the world
+            matter.World.add( this.world, bg );
             matter.World.add( this.world, stack );
             matter.World.add( this.world, catapult );
             matter.World.add( this.world, matter.Bodies.rectangle( 400, 600, 800, 50.5, { isStatic: true } ) );
