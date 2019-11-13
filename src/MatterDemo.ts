@@ -1,5 +1,6 @@
 
     import * as matter from 'matter-js';
+    import { Setting } from './Setting';
 
     /*******************************************************************************************************************
     *   The main class that launches the demo application.
@@ -56,15 +57,50 @@
                     render: {
                         // fillStyle: '#000000',
                         sprite: {
-                            texture: 'res/image/bg.jpg',
+                            texture: Setting.PATH_IMAGE + 'bg.jpg',
                             xScale:  1.0,
                             yScale:  1.0,
                         }
                     }
                 }
             );
+
             const group :number = matter.Body.nextGroup( true );
-            const catapult :matter.Body = matter.Bodies.rectangle( 400, 520, 320, 20, {} );
+            const sigsawCenter :matter.Body = matter.Bodies.rectangle(
+                400,
+                535,
+                40,
+                80,
+                {
+                    // color: '#ffff00',
+
+                    isStatic: true,
+                    collisionFilter: { group: group, category: 0, mask: 0 },
+                    render: {
+                        sprite: {
+                            texture: Setting.PATH_IMAGE + 'sigsawCenter.png',
+                            xScale:  1.0,
+                            yScale:  1.0,
+                        }
+                    }
+                }
+            );
+
+            // TODO Function for creation of bodies!
+            // TODO enum for body types etc.
+            const sigsawBody :matter.Body = matter.Bodies.rectangle(
+                400, 520, 320, 20, {
+                    render: {
+                        sprite: {
+                            texture: Setting.PATH_IMAGE + 'sigsawBody.png',
+                            xScale:  1.0,
+                            yScale:  1.0,
+                        }
+                    }
+                }
+            );
+
+            // TODO stack in bg of sigsaw center?
             const stack :matter.Composite = matter.Composites.stack(
                 250, 150, 2, 6, 0, 0,
                 ( x:number, y:number ) :matter.Body => {
@@ -72,7 +108,7 @@
                         {
                             render: {
                                 sprite: {
-                                    texture: 'res/image/stone.png',
+                                    texture: Setting.PATH_IMAGE + 'box.png',
                                     xScale:  1.0,
                                     yScale:  1.0,
                                 }
@@ -86,8 +122,10 @@
 
             // add all bodies and constraints to the world
             matter.World.add( this.world, bg );
+            matter.World.add( this.world, sigsawBody );
+            matter.World.add( this.world, sigsawCenter );
             matter.World.add( this.world, stack );
-            matter.World.add( this.world, catapult );
+
             matter.World.add(
                 this.world,
                 matter.Bodies.rectangle(
@@ -96,7 +134,7 @@
                         isStatic: true,
                         render: {
                             sprite: {
-                                texture: 'res/image/ground.png',
+                                texture: Setting.PATH_IMAGE + 'ground.png',
                                 xScale:  1.0,
                                 yScale:  1.0,
                             }
@@ -108,25 +146,17 @@
                     }
                 )
             );
-            matter.World.add( this.world, matter.Bodies.rectangle( 250, 555, 20, 50, { isStatic: true } ) );
 
-            matter.World.add( this.world, matter.Bodies.rectangle(
-                400,
-                535,
-                20,
-                80,
+            // TODO extract all elements to variables!
+            matter.World.add( this.world, matter.Bodies.rectangle( 250, 555, 40, 50,
                 {
-                    // color: '#ffff00',
-
                     isStatic: true,
-                    collisionFilter: { group: group, category: 0, mask: 0 },
                     render: {
-/*
-                        visible: true,
-                        fillStyle: 'red',
-                        strokeStyle: 'blue',
-                        lineWidth: 3,
-*/
+                        sprite: {
+                            texture: Setting.PATH_IMAGE + 'mushroom.png',
+                            xScale:  1.0,
+                            yScale:  1.0,
+                        }
                     }
                 }
             ) );
@@ -135,7 +165,7 @@
                 density: 0.005,
                 render: {
                     sprite: {
-                        texture: 'res/image/ball.png',
+                        texture: Setting.PATH_IMAGE + 'ball.png',
                         xScale:  1.0,
                         yScale:  1.0,
                     }
@@ -145,10 +175,15 @@
                 this.world,
                 matter.Constraint.create(
                     {
-                        bodyA:     catapult,
-                        pointB:    matter.Vector.clone( catapult.position ),
+                        bodyA:     sigsawBody,
+                        pointB:    matter.Vector.clone( sigsawBody.position ),
                         stiffness: 1.0,
-                        length:    0.0
+                        length:    0.0,
+                        render: {
+                            visible: false,
+                            lineWidth: 1.0,
+                            strokeStyle: '#ff0000',
+                        },
                     }
                 )
             );
@@ -193,8 +228,8 @@
         private styleBodyAndCanvas() : void
         {
             document.body.style.margin = '0';
-            document.body.style.backgroundColor = '#9f9a94';
-            document.body.style.backgroundImage = 'url( res/image/stone.png )';
+            document.body.style.backgroundColor = '#000000';
+            // document.body.style.backgroundImage = 'url( ' + Setting.PATH_IMAGE + 'box.png )';
         }
 
         /***************************************************************************************************************
