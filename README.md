@@ -68,7 +68,7 @@ Gleiches Verhalten wie das Target `webpack:development` es wird allerdings kein 
  in den Webpack Dev Server gemountet.
 
 Die in den Webpack Dev Server gemountete Frontend Anwendung kann im Browser eingesehen werden
- unter `http://localhost:5000/`
+ unter `http://localhost:1234/`
 
 Alle Einstellungen für den Webpack Dev Server befinden sich in der `/webpack.config.js`
  im Abschnitt `config.devServer`.
