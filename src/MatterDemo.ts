@@ -19,9 +19,35 @@
         public start() : void
         {
             this.initMatterEngine();
+            this.initAndAddBodies();
+            this.initMouse();
 
-            // this.createBodies();
+            this.runMatterEngine();
+        }
 
+        /***************************************************************************************************************
+        *   Initializes the matter.js engine.
+        ***************************************************************************************************************/
+        private initMatterEngine() : void
+        {
+            this.engine = matter.Engine.create();
+            this.render = matter.Render.create(
+                {
+                    element: document.body,
+                    engine: this.engine,
+                    options: {
+                        wireframes: false,
+                    }
+                }
+            );
+            this.world = this.engine.world;
+        }
+
+        /***************************************************************************************************************
+        *   Initializes all matter.js bodies.
+        ***************************************************************************************************************/
+        private initAndAddBodies() : void
+        {
             const group :number = matter.Body.nextGroup( true );
             const catapult :matter.Body = matter.Bodies.rectangle( 400, 520, 320, 20, {} );
             const stack :matter.Composite = matter.Composites.stack(
@@ -57,47 +83,34 @@
                         lineWidth: 3,
 */
 
-/*
+
                         sprite: {
                             texture: 'res/image/test.png',
                             xScale:  1.0,
                             yScale:  1.0,
                         }
- */
+
                     }
                 }
             ) );
 
             matter.World.add( this.world, matter.Bodies.circle( 560, 100, 50, { density: 0.005 } ) );
-            matter.World.add( this.world, matter.Constraint.create(
-                {
-                    bodyA:     catapult,
-                    pointB:    matter.Vector.clone( catapult.position ),
-                    stiffness: 1.0,
-                    length:    0.0
-                }
-            ) );
-
-            this.initMouse();
-
-            this.runMatterEngine();
-        }
-
-        private initMatterEngine() : void
-        {
-            this.engine = matter.Engine.create();
-            this.render = matter.Render.create(
-                {
-                    element: document.body,
-                    engine: this.engine,
-                    options: {
-                        wireframes: false,
+            matter.World.add(
+                this.world,
+                matter.Constraint.create(
+                    {
+                        bodyA:     catapult,
+                        pointB:    matter.Vector.clone( catapult.position ),
+                        stiffness: 1.0,
+                        length:    0.0
                     }
-                }
+                )
             );
-            this.world = this.engine.world;
         }
 
+        /***************************************************************************************************************
+        *   Initializes the mouse and links the mouse to the renderer.
+        ***************************************************************************************************************/
         private initMouse() : void
         {
             // add mouse control
@@ -128,6 +141,9 @@
             matter.World.add( this.world, mouseConstraint );
         }
 
+        /***************************************************************************************************************
+        *   Starts the matter.js engine.
+        ***************************************************************************************************************/
         private runMatterEngine() : void
         {
             // create the runner and start the engine and the renderer
