@@ -4,6 +4,9 @@
 
     /*******************************************************************************************************************
     *   The main class that launches the demo application.
+    *
+    *   TODO prune package.json.
+    *   TODO complete creator functions.
     *******************************************************************************************************************/
     export class MatterDemo
     {
@@ -118,37 +121,25 @@
                 }
             );
 
-            // this.addBodies();
-
-            // add all bodies and constraints to the world
-            matter.World.add( this.world, bg );
-            matter.World.add( this.world, sigsawBody );
-            matter.World.add( this.world, sigsawCenter );
-            matter.World.add( this.world, stack );
-
-            matter.World.add(
-                this.world,
-                matter.Bodies.rectangle(
-                    400, 587.5, 800, 25,
-                    {
-                        isStatic: true,
-                        render: {
-                            sprite: {
-                                texture: Setting.PATH_IMAGE + 'ground.png',
-                                xScale:  1.0,
-                                yScale:  1.0,
-                            }
-/*
-                            fillStyle: '#00000055',
-                            strokeStyle: 'transparent',
-*/
+            const ground :matter.Body = matter.Bodies.rectangle(
+                400, 587.5, 800, 25,
+                {
+                    isStatic: true,
+                    render: {
+                        sprite: {
+                            texture: Setting.PATH_IMAGE + 'ground.png',
+                            xScale:  1.0,
+                            yScale:  1.0,
                         }
+/*
+                        fillStyle: '#00000055',
+                        strokeStyle: 'transparent',
+*/
                     }
-                )
+                }
             );
 
-            // TODO extract all elements to variables!
-            matter.World.add( this.world, matter.Bodies.rectangle( 250, 555, 40, 50,
+            const mushroom :matter.Body = matter.Bodies.rectangle( 250, 555, 40, 50,
                 {
                     isStatic: true,
                     render: {
@@ -159,9 +150,9 @@
                         }
                     }
                 }
-            ) );
+            );
 
-            matter.World.add( this.world, matter.Bodies.circle( 560, 100, 50, {
+            const ball :matter.Body = matter.Bodies.circle( 560, 100, 50, {
                 density: 0.005,
                 render: {
                     sprite: {
@@ -170,23 +161,33 @@
                         yScale:  1.0,
                     }
                 }
-            } ) );
-            matter.World.add(
-                this.world,
-                matter.Constraint.create(
-                    {
-                        bodyA:     sigsawBody,
-                        pointB:    matter.Vector.clone( sigsawBody.position ),
-                        stiffness: 1.0,
-                        length:    0.0,
-                        render: {
-                            visible: false,
-                            lineWidth: 1.0,
-                            strokeStyle: '#ff0000',
-                        },
-                    }
-                )
+            } );
+
+            const sigsawLink :matter.Constraint = matter.Constraint.create(
+                {
+                    bodyA:     sigsawBody,
+                    pointB:    matter.Vector.clone( sigsawBody.position ),
+                    stiffness: 1.0,
+                    length:    0.0,
+                    render: {
+                        visible: false,
+                        lineWidth: 1.0,
+                        strokeStyle: '#ff0000',
+                    },
+                }
             );
+
+            // this.addBodies();
+
+            // add all bodies and constraints to the world
+            matter.World.add( this.world, bg );
+            matter.World.add( this.world, sigsawBody );
+            matter.World.add( this.world, sigsawCenter );
+            matter.World.add( this.world, stack );
+            matter.World.add( this.world, ground );
+            matter.World.add( this.world, mushroom );
+            matter.World.add( this.world, ball );
+            matter.World.add( this.world, sigsawLink );
         }
 
         /***************************************************************************************************************
@@ -233,11 +234,10 @@
         }
 
         /***************************************************************************************************************
-        *   Starts the matter.js engine.
+        *   Create the runner and start the engine and the renderer.
         ***************************************************************************************************************/
         private runMatterEngine() : void
         {
-            // create the runner and start the engine and the renderer
             const runner:matter.Runner = matter.Runner.create( {} );
             matter.Runner.run( runner, this.engine );
             matter.Render.run( this.render );

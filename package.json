@@ -13,11 +13,8 @@
         "webpack:dev": "webpack --mode=development --watch",
         "webpack:production": "webpack --mode=production --watch",
         "webpack:devserver": "webpack-dev-server --mode=development",
-        "typedoc:generate": "typedoc --out doc --listInvalidSymbolLinks --name \"Ant Design meets The International Chuck Norris Database, (c) 2019 Mayflower GmbH\" src/typescript",
-        "tslint:check": "tslint --project ./tsconfig.json --config ./tslint.json \"src/**/*.{ts,tsx}\"",
-        "test:all": "mocha --require ts-node/register --require ignore-styles --require src/test/index.ts src/test/**/*.ts src/test/**/*.tsx",
-        "test:jest": "jest",
-        "test:jest-coverage": "jest --coverage"
+        "typedoc:generate": "typedoc --out doc --listInvalidSymbolLinks --name \"Ant Design meets The International Chuck Norris Database, (c) 2019 Mayflower GmbH\" src",
+        "tslint:check": "tslint --project ./tsconfig.json --config ./tslint.json \"src/**/*.{ts,tsx}\""
     },
     "devDependencies": {
         "@types/chai": "^4.1.7",
@@ -60,22 +57,5 @@
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
         "wowjs": "^1.1.3"
-    },
-    "jest": {
-        "verbose": true,
-        "transform": {
-            ".(ts|tsx)": "ts-jest"
-        },
-        "testRegex": "(/src/test/.*\\.(test|spec))\\.(ts|tsx|js|jsx)$",
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js",
-            "jsx"
-        ],
-        "testURL": "http://localhost/",
-        "setupFiles": [
-            "<rootDir>/src/test/index.ts"
-        ]
     }
 }
