@@ -1,11 +1,10 @@
 
-    import { Setting    } from './Setting';
+    import { Setting } from './Setting';
     import { MatterDemo } from './MatterDemo';
 
     /*******************************************************************************************************************
     *   Being invoked when the page is loaded completely.
     *
-    *   TODO enum for body types etc in creator?
     *   TODO Sharpen all images!
     *   TODO prune package.json.
     *******************************************************************************************************************/

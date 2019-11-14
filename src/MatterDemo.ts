@@ -1,7 +1,8 @@
 
     import * as matter from 'matter-js';
-    import { Setting           } from './Setting';
-    import { IsCollidable, IsStatic, MatterCreator } from './MatterCreator';
+    import { Setting } from './Setting';
+    import { MatterCreator } from './MatterCreator';
+    import { IsCollidable, IsStatic } from './MatterEnums';
 
     /*******************************************************************************************************************
     *   The main class that launches the demo application.
@@ -145,7 +146,6 @@
         {
             document.body.style.margin = '0';
             document.body.style.backgroundColor = '#000000';
-            // document.body.style.backgroundImage = 'url( ' + Setting.PATH_IMAGE + 'box.png )';
         }
 
         /***************************************************************************************************************
