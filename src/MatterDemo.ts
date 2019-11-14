@@ -1,7 +1,7 @@
 
     import * as matter from 'matter-js';
     import { Setting           } from './Setting';
-    import { MatterCreator } from './MatterCreator';
+    import { IsCollidable, IsStatic, MatterCreator } from './MatterCreator';
 
     /*******************************************************************************************************************
     *   The main class that launches the demo application.
@@ -52,10 +52,11 @@
         ***************************************************************************************************************/
         private initAndAddBodies() : void
         {
-            const bg           :matter.Body = MatterCreator.createRectangle( 400, 300,   800, 600, 'bg.jpg',           true,  false );
-            const ground       :matter.Body = MatterCreator.createRectangle( 400, 587.5, 800, 25,  'ground.png',       true,  true  );
-            const sigsawBody   :matter.Body = MatterCreator.createRectangle( 400, 520,   320, 20,  'sigsawBody.png',   false, true  );
-            const sigsawCenter :matter.Body = MatterCreator.createRectangle( 400, 535,   40,  80,  'sigsawCenter.png', true,  false );
+            const bg           :matter.Body = MatterCreator.createRectangle( 400, 300,   800, 600, 'bg.jpg',           IsStatic.YES, IsCollidable.NO  );
+            const ground       :matter.Body = MatterCreator.createRectangle( 400, 587.5, 800, 25,  'ground.png',       IsStatic.YES, IsCollidable.YES );
+            const mushroom     :matter.Body = MatterCreator.createRectangle( 250, 555,   40,  50,  'mushroom.png',     IsStatic.YES, IsCollidable.YES );
+            const sigsawBody   :matter.Body = MatterCreator.createRectangle( 400, 520,   320, 20,  'sigsawBody.png',   IsStatic.NO,  IsCollidable.YES );
+            const sigsawCenter :matter.Body = MatterCreator.createRectangle( 400, 535,   40,  80,  'sigsawCenter.png', IsStatic.YES, IsCollidable.NO  );
 
             const boxes :matter.Body[] = [];
             for ( let col:number = 0; col < 3; ++col )
@@ -63,12 +64,10 @@
                 for ( let row:number = 0; row < 5; ++row )
                 {
                     boxes.push(
-                        MatterCreator.createRectangle( 250 + col * 50, 150 + row * 50, 50, 50,  'box.png', false, true )
+                        MatterCreator.createRectangle( 250 + col * 50, 150 + row * 50, 50, 50,  'box.png', IsStatic.NO,  IsCollidable.YES )
                     );
                 }
             }
-
-            const mushroom :matter.Body = MatterCreator.createRectangle( 250, 555, 40, 50, 'mushroom.png', false, true );
 
             const ball :matter.Body = matter.Bodies.circle( 560, 100, 50, {
                 density: 0.005,
@@ -98,10 +97,10 @@
             // add all bodies and constraints to the world
             matter.World.add( this.world, bg           );
             matter.World.add( this.world, ground       );
+            matter.World.add( this.world, mushroom     );
             matter.World.add( this.world, sigsawBody   );
             matter.World.add( this.world, boxes        );
             matter.World.add( this.world, sigsawCenter );
-            matter.World.add( this.world, mushroom     );
             matter.World.add( this.world, ball         );
             matter.World.add( this.world, sigsawLink   );
         }

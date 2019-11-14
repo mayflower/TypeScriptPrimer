@@ -3,12 +3,32 @@
     import { Setting } from './Setting';
 
     /*******************************************************************************************************************
+    *   Specifies if a body has a fixed position and is therefore not movable.
+    *******************************************************************************************************************/
+    export enum IsStatic
+    {
+        /** Body is movable. */
+        NO,
+        /** Body is fixed. */
+        YES,
+    }
+
+    /*******************************************************************************************************************
+    *   Specifies if a body can collide with other bodies.
+    *******************************************************************************************************************/
+    export enum IsCollidable
+    {
+        /** Body is not collidable. */
+        NO,
+        /** Body collides with other bodies. */
+        YES,
+    }
+
+    /*******************************************************************************************************************
     *   Offers static functionality for creating matter.js body objects.
     *******************************************************************************************************************/
     export abstract class MatterCreator
     {
-        // TODO enum collidable, isStatic
-
         /***************************************************************************************************************
         *   Create a matter.js body with the specified params.
         *
@@ -26,8 +46,8 @@
             width        :number,
             height       :number,
             imgFile      :string,
-            isStatic     :boolean,
-            isCollidable :boolean
+            isStatic     :IsStatic,
+            isCollidable :IsCollidable
         )
         : matter.Body
         {
@@ -37,11 +57,11 @@
                 width,
                 height,
                 {
-                    isSensor: !isCollidable,
-                    isStatic: isStatic,
+                    isStatic: ( isStatic     === IsStatic.YES    ),
+                    isSensor: ( isCollidable === IsCollidable.NO ),
                     render: {
                         sprite: {
-                            texture: Setting.PATH_IMAGE + imgFile,
+                            texture: ( Setting.PATH_IMAGE + imgFile ),
                             xScale:  1.0,
                             yScale:  1.0,
                         }
