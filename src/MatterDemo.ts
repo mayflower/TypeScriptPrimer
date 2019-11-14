@@ -4,9 +4,6 @@
 
     /*******************************************************************************************************************
     *   The main class that launches the demo application.
-    *
-    *   TODO prune package.json.
-    *   TODO complete creator functions.
     *******************************************************************************************************************/
     export class MatterDemo
     {
@@ -25,6 +22,7 @@
             this.initMatterEngine();
             this.initAndAddBodies();
             this.initMouse();
+
             this.styleBodyAndCanvas();
 
             this.runMatterEngine();
@@ -68,7 +66,33 @@
                 }
             );
 
+            const ground :matter.Body = matter.Bodies.rectangle(
+                400, 587.5, 800, 25,
+                {
+                    isStatic: true,
+                    render: {
+                        sprite: {
+                            texture: Setting.PATH_IMAGE + 'ground.png',
+                            xScale:  1.0,
+                            yScale:  1.0,
+                        }
+                    }
+                }
+            );
+
             const group :number = matter.Body.nextGroup( true );
+
+            const sigsawBody :matter.Body = matter.Bodies.rectangle(
+                400, 520, 320, 20, {
+                    render: {
+                        sprite: {
+                            texture: Setting.PATH_IMAGE + 'sigsawBody.png',
+                            xScale:  1.0,
+                            yScale:  1.0,
+                        }
+                    }
+                }
+            );
             const sigsawCenter :matter.Body = matter.Bodies.rectangle(
                 400,
                 535,
@@ -89,21 +113,6 @@
                 }
             );
 
-            // TODO Function for creation of bodies!
-            // TODO enum for body types etc.
-            const sigsawBody :matter.Body = matter.Bodies.rectangle(
-                400, 520, 320, 20, {
-                    render: {
-                        sprite: {
-                            texture: Setting.PATH_IMAGE + 'sigsawBody.png',
-                            xScale:  1.0,
-                            yScale:  1.0,
-                        }
-                    }
-                }
-            );
-
-            // TODO stack in bg of sigsaw center?
             const stack :matter.Composite = matter.Composites.stack(
                 250, 150, 2, 6, 0, 0,
                 ( x:number, y:number ) :matter.Body => {
@@ -118,24 +127,6 @@
                             }
                         }
                     );
-                }
-            );
-
-            const ground :matter.Body = matter.Bodies.rectangle(
-                400, 587.5, 800, 25,
-                {
-                    isStatic: true,
-                    render: {
-                        sprite: {
-                            texture: Setting.PATH_IMAGE + 'ground.png',
-                            xScale:  1.0,
-                            yScale:  1.0,
-                        }
-/*
-                        fillStyle: '#00000055',
-                        strokeStyle: 'transparent',
-*/
-                    }
                 }
             );
 
@@ -177,17 +168,15 @@
                 }
             );
 
-            // this.addBodies();
-
             // add all bodies and constraints to the world
-            matter.World.add( this.world, bg );
-            matter.World.add( this.world, sigsawBody );
+            matter.World.add( this.world, bg           );
+            matter.World.add( this.world, ground       );
+            matter.World.add( this.world, sigsawBody   );
+            matter.World.add( this.world, stack        );
             matter.World.add( this.world, sigsawCenter );
-            matter.World.add( this.world, stack );
-            matter.World.add( this.world, ground );
-            matter.World.add( this.world, mushroom );
-            matter.World.add( this.world, ball );
-            matter.World.add( this.world, sigsawLink );
+            matter.World.add( this.world, mushroom     );
+            matter.World.add( this.world, ball         );
+            matter.World.add( this.world, sigsawLink   );
         }
 
         /***************************************************************************************************************

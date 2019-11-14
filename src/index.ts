@@ -4,6 +4,12 @@
 
     /*******************************************************************************************************************
     *   Being invoked when the page is loaded completely.
+    *
+    *   TODO stack in bg of sigsaw center?
+    *   TODO prune package.json.
+    *   TODO complete creator functions.
+    *   TODO Function for creation of bodies!
+    *   TODO enum for body types etc.
     *******************************************************************************************************************/
     window.onload = () : void  =>
     {
