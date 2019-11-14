@@ -99,18 +99,18 @@ Generiert eine HTML Dokumentation unter `/doc` für alle TypeScript Quellcodes u
 
 ## Hand Outs
 
-### Warum TypeScript?
+### 1. Warum TypeScript?
 
 https://blog.mayflower.de/6135-typescript.html
 
-### Aufsetzen eines Web-Techstacks mit npm, TypeScript und Webpack
+### 2. Aufsetzen eines Web-Techstacks mit npm, TypeScript und Webpack
 
 https://blog.mayflower.de/6324-typescript-tooling-npm-webpack.html
 
-### TypeScript im Vergleich zu Java
+3. ### TypeScript im Vergleich zu Java
 
 https://blog.mayflower.de/6344-typeacript-java-entwickler.html
 
-### TypeScript Workshop für Einsteiger
+4. ### TypeScript Workshop für Einsteiger
 
 https://blog.mayflower.de/6229-typescript-workshop.html
