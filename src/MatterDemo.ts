@@ -191,7 +191,7 @@
                 {
                     mouse: mouse,
                     constraint: {
-                        stiffness: 0.2,
+                        stiffness: 1.0,
                         render: {
                             visible: false,
                             lineWidth: 1.0,

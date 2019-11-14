@@ -5,6 +5,7 @@
     /*******************************************************************************************************************
     *   Being invoked when the page is loaded completely.
     *
+    *   TODO Sharpen all images!
     *   TODO stack in bg of sigsaw center?
     *   TODO prune package.json.
     *   TODO complete creator functions.
