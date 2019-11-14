@@ -25,7 +25,7 @@
             this.initAndAddBodies();
             this.initMouse();
 
-            this.styleBodyAndCanvas();
+            this.styleDocumentBody();
 
             this.runMatterEngine();
         }
@@ -101,8 +101,8 @@
             matter.World.add( this.world, mushroom     );
             matter.World.add( this.world, sigsawBody   );
             matter.World.add( this.world, boxes        );
-            matter.World.add( this.world, sigsawCenter );
             matter.World.add( this.world, ball         );
+            matter.World.add( this.world, sigsawCenter );
             matter.World.add( this.world, sigsawLink   );
         }
 
@@ -142,7 +142,7 @@
         /***************************************************************************************************************
         *   Sets css for the document body and centers the matter.js canvas inside the body horizontally.
         ***************************************************************************************************************/
-        private styleBodyAndCanvas() : void
+        private styleDocumentBody() : void
         {
             document.body.style.margin = '0';
             document.body.style.backgroundColor = '#000000';
