@@ -5,11 +5,10 @@
     /*******************************************************************************************************************
     *   Being invoked when the page is loaded completely.
     *
+    *   TODO complete creator functions.
+    *   TODO enum for body types etc in creator?
     *   TODO Sharpen all images!
     *   TODO prune package.json.
-    *   TODO complete creator functions.
-    *   TODO Function for creation of bodies!
-    *   TODO enum for body types etc.
     *******************************************************************************************************************/
     window.onload = () : void  =>
     {

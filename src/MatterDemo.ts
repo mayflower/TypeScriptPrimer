@@ -1,6 +1,7 @@
 
     import * as matter from 'matter-js';
-    import { Setting } from './Setting';
+    import { Setting           } from './Setting';
+    import { MatterBodyCreator } from './MatterBodyCreator';
 
     /*******************************************************************************************************************
     *   The main class that launches the demo application.
@@ -51,20 +52,7 @@
         ***************************************************************************************************************/
         private initAndAddBodies() : void
         {
-            const bg :matter.Body = matter.Bodies.rectangle( 400, 300, 800, 600,
-                {
-                    isSensor: true,
-                    isStatic: true,
-                    render: {
-                        // fillStyle: '#000000',
-                        sprite: {
-                            texture: Setting.PATH_IMAGE + 'bg.jpg',
-                            xScale:  1.0,
-                            yScale:  1.0,
-                        }
-                    }
-                }
-            );
+            const bg :matter.Body = MatterBodyCreator.createRectangle( 400, 300, 800, 600, 'bg.jpg' );
 
             const ground :matter.Body = matter.Bodies.rectangle(
                 400, 587.5, 800, 25,
