@@ -6,7 +6,7 @@
     /*******************************************************************************************************************
     *   Offers static functionality for creating matter.js body objects.
     *******************************************************************************************************************/
-    export abstract class MatterCreator
+    export abstract class MatterFactory
     {
         /***************************************************************************************************************
         *   Create a matter.js body with the specified params.

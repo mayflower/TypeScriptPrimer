@@ -4,14 +4,13 @@
 
     /*******************************************************************************************************************
     *   Being invoked when the page is loaded completely.
-    *
-    *   TODO prune package.json.
     *******************************************************************************************************************/
     window.onload = () : void  =>
     {
         // set document title and acclaim debug console
-        document.title = ( Setting.APP_TITLE + ', ' + Setting.APP_COPYRIGHT );
-        console.log( 'Welcome to [' + Setting.APP_TITLE + ']' );
+        const title:string = ( Setting.APP_TITLE + ', ' + Setting.APP_COPYRIGHT );
+        document.title = title;
+        console.log( 'Welcome to [' + title + ']' );
 
         // create and launch the Catapult demo
         const main:MatterDemo = new MatterDemo();

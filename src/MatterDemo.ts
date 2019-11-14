@@ -1,7 +1,7 @@
 
     import * as matter from 'matter-js';
     import { Setting } from './Setting';
-    import { MatterCreator } from './MatterCreator';
+    import { MatterFactory } from './MatterFactory';
     import { IsCollidable, IsStatic } from './MatterEnums';
 
     /*******************************************************************************************************************
@@ -53,11 +53,11 @@
         ***************************************************************************************************************/
         private initAndAddBodies() : void
         {
-            const bg           :matter.Body = MatterCreator.createRectangle( 400, 300,   800, 600, 'bg.jpg',           IsStatic.YES, IsCollidable.NO  );
-            const ground       :matter.Body = MatterCreator.createRectangle( 400, 587.5, 800, 25,  'ground.png',       IsStatic.YES, IsCollidable.YES );
-            const mushroom     :matter.Body = MatterCreator.createRectangle( 250, 555,   40,  50,  'mushroom.png',     IsStatic.YES, IsCollidable.YES );
-            const sigsawBody   :matter.Body = MatterCreator.createRectangle( 400, 520,   320, 20,  'sigsawBody.png',   IsStatic.NO,  IsCollidable.YES );
-            const sigsawCenter :matter.Body = MatterCreator.createRectangle( 400, 535,   40,  80,  'sigsawCenter.png', IsStatic.YES, IsCollidable.NO  );
+            const bg           :matter.Body = MatterFactory.createRectangle( 400, 300,   800, 600, 'bg.jpg',           IsStatic.YES, IsCollidable.NO  );
+            const ground       :matter.Body = MatterFactory.createRectangle( 400, 587.5, 800, 25,  'ground.png',       IsStatic.YES, IsCollidable.YES );
+            const mushroom     :matter.Body = MatterFactory.createRectangle( 250, 555,   40,  50,  'mushroom.png',     IsStatic.YES, IsCollidable.YES );
+            const sigsawBody   :matter.Body = MatterFactory.createRectangle( 400, 520,   320, 20,  'sigsawBody.png',   IsStatic.NO,  IsCollidable.YES );
+            const sigsawCenter :matter.Body = MatterFactory.createRectangle( 400, 535,   40,  80,  'sigsawCenter.png', IsStatic.YES, IsCollidable.NO  );
 
             const boxes :matter.Body[] = [];
             for ( let col:number = 0; col < 3; ++col )
@@ -65,7 +65,7 @@
                 for ( let row:number = 0; row < 5; ++row )
                 {
                     boxes.push(
-                        MatterCreator.createRectangle( 250 + col * 50, 150 + row * 50, 50, 50,  'box.png', IsStatic.NO,  IsCollidable.YES )
+                        MatterFactory.createRectangle( 250 + col * 50, 150 + row * 50, 50, 50,  'box.png', IsStatic.NO,  IsCollidable.YES )
                     );
                 }
             }
