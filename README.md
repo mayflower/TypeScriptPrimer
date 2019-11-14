@@ -107,10 +107,10 @@ https://blog.mayflower.de/6135-typescript.html
 
 https://blog.mayflower.de/6324-typescript-tooling-npm-webpack.html
 
-3. ### TypeScript im Vergleich zu Java
+### 3. TypeScript im Vergleich zu Java
 
 https://blog.mayflower.de/6344-typeacript-java-entwickler.html
 
-4. ### TypeScript Workshop für Einsteiger
+### 4. TypeScript Workshop für Einsteiger
 
 https://blog.mayflower.de/6229-typescript-workshop.html
