@@ -113,22 +113,26 @@
                 }
             );
 
-            const stack :matter.Composite = matter.Composites.stack(
-                250, 150, 2, 6, 0, 0,
-                ( x:number, y:number ) :matter.Body => {
-                    return matter.Bodies.rectangle( x, y, 50, 50,
-                        {
-                            render: {
-                                sprite: {
-                                    texture: Setting.PATH_IMAGE + 'box.png',
-                                    xScale:  1.0,
-                                    yScale:  1.0,
+            const boxes :matter.Body[] = [];
+            for ( let col:number = 0; col < 3; ++col )
+            {
+                for ( let row:number = 0; row < 5; ++row )
+                {
+                    boxes.push(
+                        matter.Bodies.rectangle( 250 + col * 50, 150 + row * 50, 50, 50,
+                            {
+                                render: {
+                                    sprite: {
+                                        texture: Setting.PATH_IMAGE + 'box.png',
+                                        xScale:  1.0,
+                                        yScale:  1.0,
+                                    }
                                 }
                             }
-                        }
+                        )
                     );
                 }
-            );
+            }
 
             const mushroom :matter.Body = matter.Bodies.rectangle( 250, 555, 40, 50,
                 {
@@ -172,7 +176,7 @@
             matter.World.add( this.world, bg           );
             matter.World.add( this.world, ground       );
             matter.World.add( this.world, sigsawBody   );
-            matter.World.add( this.world, stack        );
+            matter.World.add( this.world, boxes        );
             matter.World.add( this.world, sigsawCenter );
             matter.World.add( this.world, mushroom     );
             matter.World.add( this.world, ball         );
