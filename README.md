@@ -24,6 +24,12 @@ Hierfür gebe ich einen Einblick in die Funktionsweise eines modernen Web-Tech S
 
 <hr>
 
+## Online Demo
+
+https://mayflower.github.io/TypeScriptPrimer/dist/
+
+<hr>
+
 ## Installation
 Der folgende Befehl installiert alle npm Pakete die der genannte Tech Stack benötigt:
 
