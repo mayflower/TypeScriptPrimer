@@ -52,24 +52,10 @@
         ***************************************************************************************************************/
         private initAndAddBodies() : void
         {
-            const bg :matter.Body = MatterBodyCreator.createRectangle( 400, 300, 800, 600, 'bg.jpg' );
-
-            const ground :matter.Body = matter.Bodies.rectangle(
-                400, 587.5, 800, 25,
-                {
-                    isStatic: true,
-                    render: {
-                        sprite: {
-                            texture: Setting.PATH_IMAGE + 'ground.png',
-                            xScale:  1.0,
-                            yScale:  1.0,
-                        }
-                    }
-                }
-            );
+            const bg     :matter.Body = MatterBodyCreator.createRectangle( 400, 300,   800, 600, 'bg.jpg',     true, false );
+            const ground :matter.Body = MatterBodyCreator.createRectangle( 400, 587.5, 800, 25,  'ground.png', true, true  );
 
             const group :number = matter.Body.nextGroup( true );
-
             const sigsawBody :matter.Body = matter.Bodies.rectangle(
                 400, 520, 320, 20, {
                     render: {
@@ -100,6 +86,7 @@
                     }
                 }
             );
+            // sigsawCenter.collisionFilter = { group: group, category: 0, mask: 0 };
 
             const boxes :matter.Body[] = [];
             for ( let col:number = 0; col < 3; ++col )
