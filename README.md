@@ -24,6 +24,26 @@ Hierfür gebe ich einen Einblick in die Funktionsweise eines modernen Web-Tech S
 
 <hr>
 
+## Agenda
+
+1. Begrüßung und Kurzvorstellung
+2. Anzeige der fertigen Web-Applikation im Frontend
+3. Installation des TechStacks via vorgegebener package.json und dem Node Package Manager npm
+4. Vorstellen der Funktionsweise des TypeScript Compilers
+5. Vorstellen des TypeScript Quellcodes und des transpilierten JavaScript-Codes
+6. Vorstellen der Funktionsweise des Webpack Bundlers
+7. Erläuterung der wichtigsten Features unter TypeScript
+   - Statische Typisierung
+   - Klassen, Schnittstellen, Abstraktion und Vererbung
+   - Enumerations
+   - Generics
+   - Modularisierung
+8. Generierung einer Dokumentation mittels TypeDoc
+9. Verwenden des TypeScript Linters TSLint
+10. Klärung von Rückfragen
+
+<hr>
+
 ## Online Demo
 
 https://mayflower.github.io/TypeScriptPrimer/dist/

@@ -7,8 +7,10 @@
     *******************************************************************************************************************/
     window.onload = () : void  =>
     {
-        // set document title and acclaim debug console
+        // compose app title name
         const title:string = ( Setting.APP_TITLE + ', ' + Setting.APP_COPYRIGHT );
+
+        // assign document title and acclaim debug console
         document.title = title;
         console.log( 'Welcome to [' + title + ']' );
 
