@@ -144,8 +144,13 @@
         ***************************************************************************************************************/
         private styleDocumentBody() : void
         {
-            document.body.style.margin = '0';
+            // black bordered document body
+            document.body.style.margin = '25px';
             document.body.style.backgroundColor = '#000000';
+
+            // center matter.js canvas
+            this.render.canvas.style.margin = '0 auto 0 auto';
+            this.render.canvas.style.display = 'block';
         }
 
         /***************************************************************************************************************
