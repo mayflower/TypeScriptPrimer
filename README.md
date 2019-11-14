@@ -51,7 +51,15 @@ https://mayflower.github.io/TypeScriptPrimer/dist/
 <hr>
 
 ## Installation
-Der folgende Befehl installiert alle npm Pakete die der genannte Tech Stack benötigt:
+
+Zum Betrieb von Node.js und dessen Package Managers *npm* muss Node.js lokal installiert werden.
+Bitte hierfür das Installationspaket von der Node.js Webseite runterladen und ausführen:
+
+![Node.js](_ASSET/readme/logo_nodejs.png)
+
+https://nodejs.org/en/
+
+Der folgende Befehl installiert anschließend alle npm Pakete die der genannte Tech Stack benötigt:
 
 `npm install`
 
