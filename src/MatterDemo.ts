@@ -50,43 +50,13 @@
         /***************************************************************************************************************
         *   Initializes all matter.js bodies.
         ***************************************************************************************************************/
+        // tslint:disable-next-line:max-line-length
         private initAndAddBodies() : void
         {
-            const bg     :matter.Body = MatterBodyCreator.createRectangle( 400, 300,   800, 600, 'bg.jpg',     true, false );
-            const ground :matter.Body = MatterBodyCreator.createRectangle( 400, 587.5, 800, 25,  'ground.png', true, true  );
-
-            const group :number = matter.Body.nextGroup( true );
-            const sigsawBody :matter.Body = matter.Bodies.rectangle(
-                400, 520, 320, 20, {
-                    render: {
-                        sprite: {
-                            texture: Setting.PATH_IMAGE + 'sigsawBody.png',
-                            xScale:  1.0,
-                            yScale:  1.0,
-                        }
-                    }
-                }
-            );
-            const sigsawCenter :matter.Body = matter.Bodies.rectangle(
-                400,
-                535,
-                40,
-                80,
-                {
-                    // color: '#ffff00',
-
-                    isStatic: true,
-                    collisionFilter: { group: group, category: 0, mask: 0 },
-                    render: {
-                        sprite: {
-                            texture: Setting.PATH_IMAGE + 'sigsawCenter.png',
-                            xScale:  1.0,
-                            yScale:  1.0,
-                        }
-                    }
-                }
-            );
-            // sigsawCenter.collisionFilter = { group: group, category: 0, mask: 0 };
+            const bg           :matter.Body = MatterBodyCreator.createRectangle( 400, 300,   800, 600, 'bg.jpg',           true,  false );
+            const ground       :matter.Body = MatterBodyCreator.createRectangle( 400, 587.5, 800, 25,  'ground.png',       true,  true  );
+            const sigsawBody   :matter.Body = MatterBodyCreator.createRectangle( 400, 520,   320, 20,  'sigsawBody.png',   false, true  );
+            const sigsawCenter :matter.Body = MatterBodyCreator.createRectangle( 400, 535,   40,  80,  'sigsawCenter.png', true,  false );
 
             const boxes :matter.Body[] = [];
             for ( let col:number = 0; col < 3; ++col )
