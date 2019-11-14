@@ -5,7 +5,7 @@
     /*******************************************************************************************************************
     *   Offers static functionality for creating matter.js body objects.
     *******************************************************************************************************************/
-    export abstract class MatterBodyCreator
+    export abstract class MatterCreator
     {
         // TODO enum collidable, isStatic
 

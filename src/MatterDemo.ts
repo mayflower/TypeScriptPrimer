@@ -1,7 +1,7 @@
 
     import * as matter from 'matter-js';
     import { Setting           } from './Setting';
-    import { MatterBodyCreator } from './MatterBodyCreator';
+    import { MatterCreator } from './MatterCreator';
 
     /*******************************************************************************************************************
     *   The main class that launches the demo application.
@@ -50,13 +50,12 @@
         /***************************************************************************************************************
         *   Initializes all matter.js bodies.
         ***************************************************************************************************************/
-        // tslint:disable-next-line:max-line-length
         private initAndAddBodies() : void
         {
-            const bg           :matter.Body = MatterBodyCreator.createRectangle( 400, 300,   800, 600, 'bg.jpg',           true,  false );
-            const ground       :matter.Body = MatterBodyCreator.createRectangle( 400, 587.5, 800, 25,  'ground.png',       true,  true  );
-            const sigsawBody   :matter.Body = MatterBodyCreator.createRectangle( 400, 520,   320, 20,  'sigsawBody.png',   false, true  );
-            const sigsawCenter :matter.Body = MatterBodyCreator.createRectangle( 400, 535,   40,  80,  'sigsawCenter.png', true,  false );
+            const bg           :matter.Body = MatterCreator.createRectangle( 400, 300,   800, 600, 'bg.jpg',           true,  false );
+            const ground       :matter.Body = MatterCreator.createRectangle( 400, 587.5, 800, 25,  'ground.png',       true,  true  );
+            const sigsawBody   :matter.Body = MatterCreator.createRectangle( 400, 520,   320, 20,  'sigsawBody.png',   false, true  );
+            const sigsawCenter :matter.Body = MatterCreator.createRectangle( 400, 535,   40,  80,  'sigsawCenter.png', true,  false );
 
             const boxes :matter.Body[] = [];
             for ( let col:number = 0; col < 3; ++col )
@@ -64,33 +63,12 @@
                 for ( let row:number = 0; row < 5; ++row )
                 {
                     boxes.push(
-                        matter.Bodies.rectangle( 250 + col * 50, 150 + row * 50, 50, 50,
-                            {
-                                render: {
-                                    sprite: {
-                                        texture: Setting.PATH_IMAGE + 'box.png',
-                                        xScale:  1.0,
-                                        yScale:  1.0,
-                                    }
-                                }
-                            }
-                        )
+                        MatterCreator.createRectangle( 250 + col * 50, 150 + row * 50, 50, 50,  'box.png', false, true )
                     );
                 }
             }
 
-            const mushroom :matter.Body = matter.Bodies.rectangle( 250, 555, 40, 50,
-                {
-                    isStatic: true,
-                    render: {
-                        sprite: {
-                            texture: Setting.PATH_IMAGE + 'mushroom.png',
-                            xScale:  1.0,
-                            yScale:  1.0,
-                        }
-                    }
-                }
-            );
+            const mushroom :matter.Body = MatterCreator.createRectangle( 250, 555, 40, 50, 'mushroom.png', false, true );
 
             const ball :matter.Body = matter.Bodies.circle( 560, 100, 50, {
                 density: 0.005,
