@@ -16,12 +16,6 @@
 
         // create and launch the Catapult demo
         const main:MatterDemo = new MatterDemo();
-
-
-        // const test:String = "My String";
-        // console.log( test.toLocaleLowerCase() + MatterDemo.start2 );
-
-
         main.start();
     };
 

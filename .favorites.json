@@ -1,0 +1,18 @@
+[
+    {
+        "type": "File",
+        "name": "/Users/stock/workspaces/TypeScript/TypeScriptPrimer/src/MatterDemo.ts",
+        "parent_id": null,
+        "workspaceRoot": "/Users/stock/workspaces/TypeScript/TypeScriptPrimer",
+        "workspacePath": "src/MatterDemo.ts",
+        "id": "OAXPFHse6nU0YNtp"
+    },
+    {
+        "type": "Directory",
+        "name": "/Users/stock/workspaces/TypeScript/TypeScriptPrimer/src",
+        "parent_id": null,
+        "workspaceRoot": "/Users/stock/workspaces/TypeScript/TypeScriptPrimer",
+        "workspacePath": "src",
+        "id": "mKVWdJ8yluaApiD5"
+    }
+]
